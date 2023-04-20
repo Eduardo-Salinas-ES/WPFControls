@@ -24,5 +24,17 @@ namespace WPFControls
         {
             InitializeComponent();
         }
+
+        private void numberTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            // The textblock is called number, thus this sets that textblock to 
+            // the text in the number text box.
+            number.Text = numberTextBox.Text;
+        }
+
+        private void numberTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !int.TryParse(e.Text, out int result);
+        }
     }
 }
